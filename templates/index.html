@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boast or Roast</title>
+    </head>
+    <body>
+        <h1>Ghost Post App</h1>
+        <h2>Mobbed Coded with Cesaly Garrett, Kevin Blount</h2>
+
+        <span>
+            <a href="/boasts">
+                <button>
+                    Boasts Zone
+                </button>
+            </a>
+        </span>
+        <span>
+        <a href="/roasts/">
+            <button>
+                Roasts Zone
+            </button>
+        </a>
+    </span>
+    <span>
+        <a href="/most_liked/">
+            <button>
+                Up Vote
+            </button>
+        </a>
+    </span>
+    <span>
+        <a href="/least_liked/">
+            <button>
+                Down Vote
+            </button>
+        </a>
+        </span>
+        <br>
+        <br>
+            {% for item in data %}
+                <li>{{ item.post }}</li>
+
+                {% if item.boast_or_roast %}
+                    <strong>Boast</strong>
+                {% else %}
+                    <strong>Roast</strong>
+                {% endif %}
+
+                {{ item.submission_time}}
+                <div>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="/like/{{item.id}}/"><button>Thumbs Up</button></a> {{ item.up_votes }}
+                                </td>
+                                <td>
+                                    <a href="/dislike/{{item.id}}/"><button>Thumbs Down</button></a> {{ item.down_votes }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <br>
+
+            {% endfor %}
+
+<a href="/post">
+    <button>
+        Something on your mind? Share
+    </button>
+</a>
+
+<a href="/">
+    <button>
+        Home
+    </button>
+</a>
+
+</body>
+</html>
